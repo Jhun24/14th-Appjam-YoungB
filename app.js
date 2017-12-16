@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 var randomstring = require('randomstring');
+var { Iamporter, IamporterError } = require('iamporter');
 
 var app = express();
 
@@ -26,9 +27,42 @@ var user = mongoose.Schema({
     "name" : String,
     "token" : String,
     "school" : String,
+    "cardNumber":String,
+    "cardPassword":String,
+    "cardBirthday":String,
+    "cardExpiry":String,
+    "status":String,
+});
+
+var call = mongoose.Schema({
+    "school":String,
+    "name":String,
+    "class":String,
+    "price":String,
+    "tip":String,
+    "type":String,
+    "menu":Object,
+    "userToken":String,
+    "callToken":String
+});
+
+var shuttle = mongoose.Schema({
+    "school":String,
+    "name":String,
+    "class":String,
+    "price":String,
+    "tip":String,
+    "type":String,
+    "menu":Object,
+    "userToken":String,
+    "shuttleToken":String,
+    "shuttleName":String,
 });
 
 var userModel = mongoose.model('userModel',user);
+var callModel = mongoose.model('callModel',call);
+var shuttleModel = mongoose.model('shuttleModel',shuttle);
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -40,6 +74,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 require('./routes/auth')(app , randomstring , userModel);
+require('./routes/payment')(app , Iamporter, IamporterError , userModel);
+require('./routes/call')(app , callModel , userModel , shuttleModel);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

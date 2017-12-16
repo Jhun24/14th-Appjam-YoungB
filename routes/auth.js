@@ -26,8 +26,8 @@ function auth(app , randomstring , userModel) {
         userModel.findOne({ id: profile.id }, (err, user) => {
             if (user) {
                 return done(err, user);
-            } // 회원 정보가 있으면 로그인
-            var saveUser = new userModel({ // 없으면 회원 생성
+            }
+            var saveUser = new userModel({
                 id: profile.id,
                 name: profile.name,
                 password : profile.password,
@@ -35,7 +35,7 @@ function auth(app , randomstring , userModel) {
             });
             saveUser.save((err) => {
                 if(err) throw err;
-                return done(200 , saveUser.token); // 새로운 회원 생성 후 로그인
+                return done(200 , saveUser.token);
             });
         });
     }));
