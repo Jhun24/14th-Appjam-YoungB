@@ -2,11 +2,12 @@
  * Created by janghunlee on 2017. 12. 16..
  */
 
-module.exports = auth;
-
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+
+
+module.exports = auth;
 
 function auth(app , randomstring , userModel) {
 
