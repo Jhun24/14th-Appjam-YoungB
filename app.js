@@ -39,6 +39,7 @@ var call = mongoose.Schema({
     "school":String,
     "name":String,
     "class":String,
+    "profileUrl":String,
     "price":String,
     "tip":String,
     "type":String,
