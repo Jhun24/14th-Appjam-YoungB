@@ -173,3 +173,75 @@
 > response
 
     sever code 200
+    
+    
+## /call
+
+### /call/list
+
+> request
+
+    token : 유저 토큰
+    
+> response
+
+    현재 학교의 빵셔틀 요청 array 반환
+    
+    call Schema 참조
+   
+### /call/shuttle
+
+> request
+
+    token : 유저 토큰
+    
+    tip : 빵셔틀 수수료
+    
+    price: 빵가격
+    
+    type : 지불 방식 (미리결제 , 현금결제 , 대신구매)
+    
+    menu : 빵 목록
+    
+    EX : { "맛스타" : 2,"호두마루" : 1}
+    
+>  response
+
+    server status 200
+    
+### /call/shuttle/accept
+
+> request
+
+    token : 빵셔틀 하는 유저의 토큰
+    
+    callToken : 빵셔틀 요청글의 토큰
+    
+> response
+
+    server status 200
+    
+### /call/shuttle/list
+
+> request
+
+    token : 유저 토큰
+    
+> response
+
+    현재 빵셔틀을 시키거나 빵셔틀 중인 리스트 array
+     
+
+## /menu
+
+### /menu/list
+
+> request
+
+    파라미터가 없습니다
+    
+> response
+
+    매뉴 리스트 array
+    
+    
