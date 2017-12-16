@@ -50,7 +50,7 @@ function auth(app , randomstring , userModel) {
     }));
 
     app.get('/auth/facebook/token', passport.authenticate('facebook-token'), function (req, res) {
-        console.log("user token : " + req.param('access_token'));
+        console.log("user token : " + req.query('access_token'));
         if(req.user){
             var response = {
                 id : req.user.id,

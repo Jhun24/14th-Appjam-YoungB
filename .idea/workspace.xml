@@ -53,8 +53,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="351">
-                <caret line="137" column="26" lean-forward="false" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
+              <first_editor relative-caret-position="317">
+                <caret line="135" column="23" lean-forward="false" selection-start-line="135" selection-start-column="23" selection-end-line="135" selection-end-column="23" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -66,18 +66,9 @@
         <entry file="file://$PROJECT_DIR$/routes/auth.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="101" selection-end-column="10" />
+              <caret line="52" column="47" lean-forward="false" selection-start-line="52" selection-start-column="47" selection-end-line="52" selection-end-column="47" />
               <folding>
                 <element signature="e#0#50#0" expanded="false" />
-                <marker date="1513442851000" expanded="true" signature="223:4951" ph="{...}" />
-                <marker date="1513442851000" expanded="true" signature="2026:2240" ph="{&quot;clientID&quot;: '552505858435061'...}" />
-                <marker date="1513442851000" expanded="true" signature="2293:2886" ph="{...}" />
-                <marker date="1513442851000" expanded="true" signature="2359:2875" ph="{...}" />
-                <marker date="1513442851000" expanded="true" signature="2386:2447" ph="{...}" />
-                <marker date="1513442851000" expanded="true" signature="2544:2718" ph="{&quot;id&quot;: profile.id...}" />
-                <marker date="1513442851000" expanded="true" signature="2759:2860" ph="{...}" />
-                <marker date="1513442851000" expanded="true" signature="2971:3050" ph="{&quot;authType&quot;: 'rerequest'...}" />
-                <marker date="1513442851000" expanded="true" signature="3176:3216" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -96,8 +87,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="79" column="30" lean-forward="false" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
+            <state relative-caret-position="329">
+              <caret line="92" column="24" lean-forward="true" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -315,12 +306,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1513407861141</updated>
-      <workItem from="1513407862646" duration="19362000" />
+      <workItem from="1513407862646" duration="20119000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19362000" />
+    <option name="totallyTimeSpent" value="20119000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -403,14 +394,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="79" column="30" lean-forward="false" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/menu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-319">
@@ -452,29 +435,28 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="351">
-            <caret line="137" column="26" lean-forward="false" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
+          <first_editor relative-caret-position="317">
+            <caret line="135" column="23" lean-forward="false" selection-start-line="135" selection-start-column="23" selection-end-line="135" selection-end-column="23" />
             <folding />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="92" column="24" lean-forward="true" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/auth.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="101" selection-end-column="10" />
+          <caret line="52" column="47" lean-forward="false" selection-start-line="52" selection-start-column="47" selection-end-line="52" selection-end-column="47" />
           <folding>
             <element signature="e#0#50#0" expanded="false" />
-            <marker date="1513442851000" expanded="true" signature="223:4951" ph="{...}" />
-            <marker date="1513442851000" expanded="true" signature="2026:2240" ph="{&quot;clientID&quot;: '552505858435061'...}" />
-            <marker date="1513442851000" expanded="true" signature="2293:2886" ph="{...}" />
-            <marker date="1513442851000" expanded="true" signature="2359:2875" ph="{...}" />
-            <marker date="1513442851000" expanded="true" signature="2386:2447" ph="{...}" />
-            <marker date="1513442851000" expanded="true" signature="2544:2718" ph="{&quot;id&quot;: profile.id...}" />
-            <marker date="1513442851000" expanded="true" signature="2759:2860" ph="{...}" />
-            <marker date="1513442851000" expanded="true" signature="2971:3050" ph="{&quot;authType&quot;: 'rerequest'...}" />
-            <marker date="1513442851000" expanded="true" signature="3176:3216" ph="{...}" />
           </folding>
         </state>
       </provider>

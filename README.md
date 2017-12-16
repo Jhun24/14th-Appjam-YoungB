@@ -133,7 +133,7 @@
 
 ## /auth
 
-## /auth/facebook
+## /auth/facebook/token
 
 ## /auth/facebook/callback
 
