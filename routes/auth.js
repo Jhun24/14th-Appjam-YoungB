@@ -18,24 +18,25 @@ function auth(app , randomstring , userModel) {
     });
 
     passport.use(new FacebookStrategy({
-        clientID: '페이스북 클라이언트 아이디',
-        clientSecret: '페이스북 클라이언트 시크릿',
-        callbackURL: '홈페이지주소/auth/facebook/callback',
+        clientID: '552505858435061',
+        clientSecret: 'aeb29558f28b1f8507f9b4f8f9c6b848',
+        callbackURL: 'soylatte.kr:6974/auth/facebook/callback',
         passReqToCallback: true,
     }, (req, accessToken, refreshToken, profile, done) => {
         userModel.findOne({ id: profile.id }, (err, user) => {
             if (user) {
                 return done(err, user);
             }
+            var token = randomstring.generate();
             var saveUser = new userModel({
                 id: profile.id,
                 name: profile.name,
                 password : profile.password,
-                token : randomstring.generate(),
+                token : token,
             });
             saveUser.save((err) => {
                 if(err) throw err;
-                return done(200 , saveUser.token);
+                return done(200 , token);
             });
         });
     }));
