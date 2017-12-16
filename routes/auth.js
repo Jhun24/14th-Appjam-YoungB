@@ -11,11 +11,14 @@ module.exports = auth;
 
 function auth(app , randomstring , userModel) {
 
-    app.get('/auth/facebook', passport.authenticate('facebook', {
-        authType: 'rerequest', scope: ['public_profile', 'email']
-    }));
-    app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/' }), function(req, res) {
-        res.redirect('/');
+    passport.serializeUser((user, done)=>{
+        console.log("serialize")
+        done(null, user);
+    });
+
+    passport.deserializeUser((user, done)=>{
+        console.log("deserialize")
+        done(null, user);
     });
 
     passport.use(new FacebookStrategy({
@@ -41,6 +44,14 @@ function auth(app , randomstring , userModel) {
             });
         });
     }));
+
+
+    app.get('/auth/facebook', passport.authenticate('facebook', {
+        authType: 'rerequest', scope: ['public_profile', 'email']
+    }));
+    app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/' }), function(req, res) {
+        res.redirect('/');
+    });
 
     app.post('/auth/login',(req,res)=>{
         "use strict";
