@@ -34,7 +34,7 @@ function call(app , callModel , userModel , randomstring ,shuttleModel) {
     app.post('/call/shuttle',(req,res)=>{
         "use strict";
         var data = req.body;
-
+        console.log(data.token);
         userModel.find({"token":data.token},(err,model)=>{
             if(err) throw err;
             if(model.length == 0){

@@ -5,7 +5,7 @@
 module.exports = payment;
 
 function payment(app,iamporter , IamporterError , userModel) {
-    app.post('/user/update/card',(req,res)=>{
+    app.post('/payment/update/card',(req,res)=>{
         "use strict";
         var data = req.body;
         data.token = req.session.token;
@@ -26,10 +26,9 @@ function payment(app,iamporter , IamporterError , userModel) {
         });
     });
 
-    app.post('/user/charge',(req,res)=>{
+    app.post('/payment/charge',(req,res)=>{
         "use strict";
         var data = req.body;
-        data.token = req.session.token;
 
         userModel.find({"token":data.token},(err,model)=>{
             if(err) throw err;

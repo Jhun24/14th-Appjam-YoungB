@@ -65,7 +65,12 @@ function auth(app , randomstring , userModel) {
         userModel.find({"id":data.id},(err,model)=>{
             if(err) throw err;
             if(model.length == 0){
-                var saveUser = new userModel(data);
+                var saveUser = new userModel({
+                    "id":data.id,
+                    "password":data.password,
+                    "name":data.name,
+                    "token":data.token,
+                });
                 saveUser.save((err,model)=>{
                     if(err) throw err;
                     res.send(200 , data.token);
@@ -73,6 +78,24 @@ function auth(app , randomstring , userModel) {
             }
             else{
                 res.send(409 , "User Already Exist");
+            }
+        });
+    });
+
+    app.post('/auth/update/school',(req,res)=>{
+        "use strict";
+        var data = req.body;
+
+        userModel.find({"token":data.token},(err,model)=>{
+            if(err) throw err;
+            if(model.length == 0){
+                res.send(404);
+            }
+            else{
+                userModel.update({"token":data.token},{$set:{"school":data.school,"class":data.class}},(err,model)=>{
+                    if(err) throw err;
+                    res.send(200);
+                });
             }
         });
     });

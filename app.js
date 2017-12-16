@@ -14,7 +14,7 @@ var app = express();
 // view engine setup
 
 
-mongoose.connect('mongodb://localhost:27017/test') ;
+mongoose.connect('mongodb://localhost:27017/youngb') ;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
@@ -27,6 +27,7 @@ var user = mongoose.Schema({
     "name" : String,
     "token" : String,
     "school" : String,
+    "class":String,
     "cardNumber":String,
     "cardPassword":String,
     "cardBirthday":String,
@@ -75,7 +76,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 require('./routes/auth')(app , randomstring , userModel);
 require('./routes/payment')(app , Iamporter, IamporterError , userModel);
-require('./routes/call')(app , callModel , userModel , shuttleModel);
+require('./routes/call')(app , callModel , userModel , randomstring , shuttleModel);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
