@@ -133,6 +133,10 @@
 
 ## /auth
 
+## /auth/facebook
+
+## /auth/facebook/callback
+
 ### POST : /auth/login
 
     로그인 때 사용하는 쿼리입니다
@@ -366,3 +370,4 @@
     server status 404
     
     Error Message : User Not Found
+    
