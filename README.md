@@ -133,7 +133,9 @@
 
 ## /auth
 
-### /auth/login
+### POST : /auth/login
+
+    로그인 때 사용하는 쿼리입니다
 
 > request
 
@@ -144,8 +146,16 @@
 > response
 
     유저토큰을 반환합니다
+
+> response : Error
+
+    server status 404
     
-### /auth/register
+    Error Message : User Not Found
+    
+### POST : /auth/register
+
+    회원가입때 사용하는 쿼리입니다
 
 > request
 
@@ -158,9 +168,16 @@
 > response
 
     유저토큰을 반환합니다
+    
+> response : Error
 
-### /auth/update/school
+    server status 409
+    
+    Error Message : User Already Exist
 
+### POST : /auth/update/school
+
+    학교정보와 반정보를 업데이트할때 쓰는 쿼리입니다
 
 > request
 
@@ -174,10 +191,18 @@
 
     sever code 200
     
+> response : Error
+
+    server status 404
     
+        
 ## /call
 
-### /call/list
+### GET : /call/list?token=유저토큰
+
+    현재 매점 주문 목록을 받아오는 쿼리입니다
+    
+    학교별로만 출력됨
 
 > request
 
@@ -188,8 +213,16 @@
     현재 학교의 빵셔틀 요청 array 반환
     
     call Schema 참조
+    
+> response : Error
+
+    server status 404
+    
+    Error Message : User Not Found    
    
-### /call/shuttle
+### POST :  /call/shuttle
+
+    매점 주문을 추가하는 쿼리입니다
 
 > request
 
@@ -209,7 +242,16 @@
 
     server status 200
     
-### /call/shuttle/accept
+> response : Error
+
+    server status 404
+    
+    Error Message : User Not Found
+        
+        
+### POST :  /call/shuttle/accept
+
+    매점 주문을 수락하는 쿼리입니다
 
 > request
 
@@ -221,7 +263,17 @@
 
     server status 200
     
-### /call/shuttle/list
+> response : Error
+
+    server status 404
+    
+    Error Message : Token Error
+    
+### GET : /call/shuttle/list?token=유저토큰
+
+    현재 매점 주문 배달 상태를 확인하는 쿼리입니다
+    
+    카카오택시 배차상태
 
 > request
 
@@ -230,11 +282,34 @@
 > response
 
     현재 빵셔틀을 시키거나 빵셔틀 중인 리스트 array
-     
+    
+> response : Error
+
+    server status 404
+
+### POST : /call/shuttle/finish
+
+    매점 배달을 완료했을때 보내는 쿼리입니다
+
+> request
+
+    token : 유저 토큰
+    
+> response
+
+    server status 200
+    
+> response : Error
+
+    server status 404
+    
+    Error Message : User Not Found
 
 ## /menu
 
-### /menu/list
+### GET : /menu/list
+
+    매점 매뉴를 받아오는 쿼리입니다
 
 > request
 
@@ -244,4 +319,50 @@
 
     매뉴 리스트 array
     
+## /payment
+
+### POST : /payment/update/card
+
+    카드 번호를 등록하는 쿼리입니다
     
+> request
+
+    token : 유저토큰
+    
+    cardNumber : 유저 카드 번호
+    
+    cardPassword : 유저 카드 비밀번호 앞 두자리
+    
+    cardExpiry : 유저 카드 만료일
+    
+    cardBirthday : 유저 생일
+    
+> response
+
+    server code 200
+    
+> response : Error
+
+    server status 404
+    
+    Error Message : User Not Found
+
+### POST : /payment/charge
+
+    등록된 카드로 파라미터 액수만큼 결재합니다
+    
+> request
+    
+    token : 유저 토큰
+    
+    amount : 결재할 액수
+    
+> response
+
+    server stauts 200
+    
+> response : Error
+
+    server status 404
+    
+    Error Message : User Not Found

@@ -8,6 +8,7 @@ function menu(app) {
 
     app.get('/menu/list',(req,res)=>{
         "use strict";
+        console.log("Yeha")
         var menuList = [
             {
                 "name":"라뽁이",

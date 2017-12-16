@@ -8,8 +8,6 @@ function payment(app,iamporter , IamporterError , userModel) {
     app.post('/payment/update/card',(req,res)=>{
         "use strict";
         var data = req.body;
-        data.token = req.session.token;
-        console.log(data.token);
         userModel.find({"token":data.token},(err,model)=>{
             if(err) throw err;
 
@@ -20,7 +18,7 @@ function payment(app,iamporter , IamporterError , userModel) {
                 userModel.update({"token":data.token},{$set:{"cardNumber":data.cardNumber,"cardPassword":data.cardPassword,"cardBirthday":data.cardBirthday,"cardExpiry":data.cardExpiry}},(err,model)=>{
                     if(err) throw err;
 
-                    res.send(200 , data);
+                    res.send(200);
                 });
             }
         });

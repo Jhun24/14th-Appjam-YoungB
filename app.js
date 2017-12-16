@@ -77,6 +77,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('./routes/auth')(app , randomstring , userModel);
 require('./routes/payment')(app , Iamporter, IamporterError , userModel);
 require('./routes/call')(app , callModel , userModel , randomstring , shuttleModel);
+require('./routes/menu')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

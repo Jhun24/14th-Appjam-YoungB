@@ -118,14 +118,15 @@ function call(app , callModel , userModel , randomstring ,shuttleModel) {
     app.get('/call/shuttle/list',(req,res)=>{
         "use strict";
         var token = req.query.token;
-
+        console.log("query start")
         userModel.find({"token":token},(err,model)=>{
             if(err) throw err;
             if(model.length == 0){
                 res.send(404);
             }
             else{
-                if(model[0]["status"] == "shuttle"){
+                console.log(model[0]["status"])
+                if(model[0]["status"] == "order"){
                     shuttleModel.find({"shuttleToken":token},(err,model)=>{
                         if(err) throw err;
 
@@ -137,6 +138,43 @@ function call(app , callModel , userModel , randomstring ,shuttleModel) {
                         }
                     });
                 }
+            }
+        });
+    });
+
+    app.post('/call/shuttle/finish',(req,res)=>{
+        "use strict";
+        var data = req.body;
+
+        userModel.find({"token":data.token},(err,model)=>{
+            if(err) throw err;
+
+            if(model.length == 0){
+                res.send(404 , "user not found")
+            }
+            else{
+                shuttleModel.find({"userToken":data.token},(err,model)=>{
+                    if(err) throw err;
+
+                    if(model.length == 0){
+                        res.send(404 , "shuttle not found");
+                    }
+                    else{
+                        userModel.update({"token":model[0]["userToken"]},{$set:{"status":"none"}},(err)=>{
+                            if(err) throw err;
+                        });
+
+                        userModel.update({"token":data.token},{$set:{"status":"none"}},(err)=>{
+                            if(err) throw err;
+                        });
+
+                        shuttleModel.remove({"userToken":data.token},(err,model)=>{
+                            if(err) throw err;
+
+                            res.send(200);
+                        });
+                    }
+                });
             }
         });
     });

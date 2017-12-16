@@ -77,6 +77,7 @@ function auth(app , randomstring , userModel) {
                 });
             }
             else{
+                console.log(model);
                 res.send(409 , "User Already Exist");
             }
         });
