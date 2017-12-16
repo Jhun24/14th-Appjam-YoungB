@@ -27,6 +27,7 @@ var user = mongoose.Schema({
     "school" : String,
     "class":String,
     "number": String,
+    "profileUrl", String,
     "cardNumber":String,
     "cardPassword":String,
     "cardBirthday":String,

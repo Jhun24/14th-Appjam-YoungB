@@ -131,7 +131,8 @@ function auth(app , randomstring , userModel) {
                     "school":data.school,
                     "class":data.class,
                     "grade": data.grade,
-                    "number": data.number
+                    "number": data.number,
+                    "profileUrl": data.profile
                 });
                 saveUser.save((err,model)=>{
                     if(err) throw err;
