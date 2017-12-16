@@ -49,25 +49,24 @@ function auth(app , randomstring , userModel) {
         })
     }));
 
-    app.get('/auth/facebook/token', passport.authenticate('facebook-token'), function (req, res) {
-        console.log("user token : " + req.query('access_token'));
-        if(req.user){
-            var response = {
-                id : req.user.id,
-                name : req.user.displayName
+    app.get('/auth/facebook/token', function (req, res) {
+        console.log("user token : " + req.query('token'));
+        var accessToken = req.query('token');
+        if(accessToken){
+        userModel.find({"token": accessToken},(err,model)=>{
+            if(err) throw err;
 
-            };
-            res.send(200, response);
-        }
-        else if(!req.user){
-            res.send(401, "Can't find User On Facebook. It May Be Unusable.");
-        }
+            if(model.length == 0){
+                res.send(201,"User Not Found");
+            }
+            else{
+                res.send(200,model[0]["token"]);
+            }
+        });
+      }else{
+          res.send(401, "Can't find User On Facebook. It May Be Unusable.");
+      }
     });
-
-    app.get('/auth/facebook/callback', passport.authenticate('facebook-token', {
-        successRedirect : '/',
-        failureRedirect : '/'
-    }));
 
     // passport.use(new FacebookStrategy({
     //     clientID: '552505858435061',
@@ -105,14 +104,14 @@ function auth(app , randomstring , userModel) {
         "use strict";
         var data = req.body;
 
-        userModel.find({"id":data.id,"password":data.password},(err,model)=>{
+        userModel.find({"token": data.token},(err,model)=>{
             if(err) throw err;
 
             if(model.length == 0){
                 res.send(404,"User Not Found");
             }
             else{
-                res.send(200,model[0]["token"]);
+                res.send(200, model[0]);
             }
         });
     });
@@ -123,14 +122,16 @@ function auth(app , randomstring , userModel) {
 
         data.token = randomstring.generate();
 
-        userModel.find({"id":data.id},(err,model)=>{
+        userModel.find({"token":data.token},(err,model)=>{
             if(err) throw err;
             if(model.length == 0){
                 var saveUser = new userModel({
-                    "id":data.id,
-                    "password":data.password,
-                    "name":data.name,
                     "token":data.token,
+                    "name":data.name,
+                    "school":data.school,
+                    "class":data.class,
+                    "grade": data.grade,
+                    "number": data.number
                 });
                 saveUser.save((err,model)=>{
                     if(err) throw err;
@@ -140,24 +141,6 @@ function auth(app , randomstring , userModel) {
             else{
                 console.log(model);
                 res.send(409 , "User Already Exist");
-            }
-        });
-    });
-
-    app.post('/auth/update/school',(req,res)=>{
-        "use strict";
-        var data = req.body;
-
-        userModel.find({"token":data.token},(err,model)=>{
-            if(err) throw err;
-            if(model.length == 0){
-                res.send(404);
-            }
-            else{
-                userModel.update({"token":data.token},{$set:{"school":data.school,"class":data.class}},(err,model)=>{
-                    if(err) throw err;
-                    res.send(200);
-                });
             }
         });
     });

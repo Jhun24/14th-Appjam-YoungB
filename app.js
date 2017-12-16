@@ -22,12 +22,11 @@ db.once('open', function callback () {
 });
 
 var user = mongoose.Schema({
-    "id" : String,
-    "password" : String,
     "name" : String,
     "token" : String,
     "school" : String,
     "class":String,
+    "number": String,
     "cardNumber":String,
     "cardPassword":String,
     "cardBirthday":String,
